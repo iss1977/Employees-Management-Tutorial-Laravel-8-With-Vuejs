@@ -71,3 +71,5 @@
 <i>default SAIL configuration is using Laravel 9.0</i>
 - Installing Laravel/ui
 - Generate login / registration scaffolding -> _php artisan ui bootstrap --auth_
+- adding vue via : _php artisan ui vue_
+
