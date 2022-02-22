@@ -67,5 +67,7 @@
 
 ## Development steps:
 
-Spin up a docker app with 3 containers using Laravel Sail. Modify SAIL configuration file to use Laravel 8.x.
+- Spin up a docker app with 3 containers using Laravel Sail. Modify SAIL configuration file to use Laravel 8.x.
 <i>default SAIL configuration is using Laravel 9.0</i>
+- Installing Laravel/ui
+- Generate login / registration scaffolding -> _php artisan ui bootstrap --auth_
