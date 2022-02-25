@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth; // used to hide vscode error. Not necesarry
+
+
 
 /*
 |--------------------------------------------------------------------------
