@@ -73,4 +73,7 @@
 - Generate login / registration scaffolding -> _php artisan ui bootstrap --auth_
 - adding vue via : _php artisan ui vue_
 - creating migrations
-- 
+- modifying the registration form
+- change from docker to XAMP for better performance.
+- Dashbord development using SB Admin _https://github.com/startbootstrap/startbootstrap-sb-admin_
+- importing main Dashboard
