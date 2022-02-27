@@ -11,12 +11,14 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
+ mix.sass('resources/sass/sb-admin2-scss/sb-admin-2.scss', 'public/css/sb-admin2.css');
+
+ mix.js('resources/js/sb-admin-2.js', 'public/js');
+
+ mix.js('resources/js/app.js', 'public/js')
     .vue()
     .sass('resources/sass/app.scss', 'public/css');
 
-mix.js('resources/js/sb-admin.js', 'public/js')
-    .version();
+mix.sass('resources/sass/fontawesome-free.scss','public/css/fontawesome-free');
 
-mix.sass('resources/sass/sb-admin-scss/styles.scss', 'public/css/admin-sb.css');
-
+mix.version();

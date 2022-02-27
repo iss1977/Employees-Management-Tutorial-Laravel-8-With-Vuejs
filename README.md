@@ -79,3 +79,6 @@
 - importing main Dashboard
 - * changing precompiled dashboard css file with on fly compiled scss file via laravel mix
 - * adding jquery to node modules - loading via laravel mix. 
+- * upgrade from SB Admin ver 6.0.3 to SB Admin 2 ver 4.1.4
+- * adding fontawesome to project via laravel mix
+
