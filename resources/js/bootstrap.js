@@ -1,8 +1,15 @@
 window._ = require('lodash');
 
+/**
+ * Adding jQuery
+ */
+window.$ = require('jquery');
+
 try {
     require('bootstrap');
-} catch (e) {}
+} catch (e) {
+    console.error('Error loading Bootstrap');
+}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

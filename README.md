@@ -67,13 +67,15 @@
 
 ## Development steps:
 
-- Spin up a docker app with 3 containers using Laravel Sail. Modify SAIL configuration file to use Laravel 8.x.
+- * Spin up a docker app with 3 containers using Laravel Sail. Modify SAIL configuration file to use Laravel 8.x.
 <i>default SAIL configuration is using Laravel 9.0</i>
-- Installing Laravel/ui + rollback to bootstrap 4.6
+- Installing Laravel/ui + * rollback to bootstrap 4.6
 - Generate login / registration scaffolding -> _php artisan ui bootstrap --auth_
 - adding vue via : _php artisan ui vue_
 - creating migrations
 - modifying the registration form
-- change from docker to XAMP for better performance.
+- * change from docker to XAMP for better performance.
 - Dashbord development using SB Admin _https://github.com/startbootstrap/startbootstrap-sb-admin_
 - importing main Dashboard
+- * changing precompiled dashboard css file with on fly compiled scss file via laravel mix
+- * adding jquery to node modules - loading via laravel mix. 

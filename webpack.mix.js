@@ -17,3 +17,6 @@ mix.js('resources/js/app.js', 'public/js')
 
 mix.js('resources/js/sb-admin.js', 'public/js')
     .version();
+
+mix.sass('resources/sass/sb-admin-scss/styles.scss', 'public/css/admin-sb.css');
+
