@@ -3,7 +3,7 @@ window._ = require('lodash');
 /**
  * Adding jQuery
  */
-window.$ = require('jquery');
+window.$ = window.jQuery = require('jquery');
 
 try {
     require('bootstrap');

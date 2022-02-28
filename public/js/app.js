@@ -2100,7 +2100,7 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
  * Adding jQuery
  */
 
-window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 try {
   __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");

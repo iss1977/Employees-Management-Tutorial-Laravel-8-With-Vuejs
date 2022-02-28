@@ -4,8 +4,8 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
+        <meta name="description" content="Dashboard for Employee management" />
+        <meta name="author" content="Laraveller / iss1977" />
         <title>Dashboard</title>
 
         C:\Laravel8-VueJS-Employee\Employees-Management-Tutorial-Laravel-8-With-Vuejs\public\css\fontawesome-free\fontawesome-free.css
@@ -745,7 +745,7 @@
         <script src="{{ mix('js/app.js') }}"></script> 
         <script src="{{ mix('js/sb-admin-2.js') }}"></script> <!-- Includes bootstrap -->
 
-        
+
         <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script> -->
