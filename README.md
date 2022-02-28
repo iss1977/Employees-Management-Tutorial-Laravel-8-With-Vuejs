@@ -81,4 +81,5 @@
 - * adding jquery to node modules - loading via laravel mix. 
 - * upgrade from SB Admin ver 6.0.3 to SB Admin 2 ver 4.1.4
 - * adding fontawesome to project via laravel mix
-
+- dashboard configuration for employee management
+- adding user locked for 5 minutes after 3 unsuccesful attempts
