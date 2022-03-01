@@ -83,3 +83,7 @@
 - * adding fontawesome to project via laravel mix
 - dashboard configuration for employee management
 - adding user locked for 5 minutes after 3 unsuccesful attempts
+- creating UserController for User management ( create, modify adn delete _ php artisan make:controller Backend/UserController --resource _), routes in web.php
+- creating views for view, create and edit the user
+- * moving image assets via webpack from resources to public folder to be prepared for distribution
+- creating Form Request validator

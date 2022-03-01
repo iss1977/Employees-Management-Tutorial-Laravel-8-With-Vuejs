@@ -21,4 +21,7 @@ const mix = require('laravel-mix');
 
 mix.sass('resources/sass/fontawesome-free.scss','public/css/fontawesome-free');
 
+mix.copy('resources/images/*.*', 'public/images/');
+
+
 mix.version();
