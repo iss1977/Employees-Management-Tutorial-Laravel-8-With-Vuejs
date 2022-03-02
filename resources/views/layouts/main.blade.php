@@ -19,13 +19,17 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <!-- Custom styles added by the views-->
+    @stack('other-css')
 
 </head>
 
 <body id="page-top">
+    @yield('flash-messages')
 
     <!-- Page Wrapper -->
     <div id="wrapper">
+
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -394,6 +398,9 @@
 
     <script src="{{ mix('js/app.js') }}"></script>
     <script src="{{ mix('js/sb-admin-2.js') }}"></script> <!-- Includes bootstrap -->
+
+     <!-- Here will be additional scripts added as needed by the views. -->
+    @stack('scripts')
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/chart-area-demo.js"></script>

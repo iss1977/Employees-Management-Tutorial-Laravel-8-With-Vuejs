@@ -1,6 +1,15 @@
 @extends('layouts.main')
 
+
+{{-- Include flash messages if any --}}
+@section('flash-messages')
+    @include('partials.flash-message')
+@endsection
+
+
+
 @section('content')
+
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4 container-fluid">
         <h1 class="h3 mb-0 text-gray-800">Users</h1>

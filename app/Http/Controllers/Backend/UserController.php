@@ -18,8 +18,21 @@ class UserController extends Controller
      */
     public function index()
     {
+        $request = request();
+
+
+        $array2send=[
+            'success'=>'Data saved',
+            'success'=>'User created',
+            'error'=>'Not found'
+        ];
+
+
+        $request->session()->put('hello', 'trocadello');
+        $request->session()->put('array2sendtoview', $array2send);
+
         $users = User::all();
-        return view('users.index', compact('users'));
+        return view('users.index', compact('users','request'));
     }
 
     /**
@@ -104,7 +117,7 @@ class UserController extends Controller
             return redirect()->route('users.index')->with('warning',__('You can not delete your own account'));
         }
         $user->delete();
-        return redirect()->route('users.index')->with('message',__('User deleted succesfully'));
+        return redirect()->route('users.index')->with('success',__('User deleted succesfully'));
 
     }
 }
