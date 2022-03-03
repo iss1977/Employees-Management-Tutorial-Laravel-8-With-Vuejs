@@ -18,41 +18,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $request = request();
 
 
-        $notifications=[
-            [
-                'type'=>'success',
-                'title'=>'Title',
-                'message'=>'Everything fine'
-            ],
-            [
-                'type'=>'danger',
-                'message'=>'Better as last tine'
-            ],
-            [
-                'type'=>'warning',
-                'message'=>'This is a warning maessage'
-            ],
-            [
-                'type'=>'info',
-                'message'=>'This is an info message'
-            ],
-            [
-                'type'=>'notexisting',
-                'message'=>'Gone wrong'
-            ],
-
-
-        ];
-
-
-        // $request->session()->put('hello', 'trocadello');
-        //$request->session()->put('array2sendtoview', $array2send);
 
         $users = User::all();
-        return view('users.index', compact('users','request','notifications'));
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -80,7 +50,14 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        return redirect()->route('users.index')->with('message',__('User registered succesfully'));
+
+        $notifications = array(
+
+            'type'=>'success',
+            'title'=>__('User Management'),
+            'message'=>__('User successfully created.')
+        );
+        return redirect()->route('users.index')->with('notifications', array($notifications));
     }
 
     /**
@@ -122,10 +99,13 @@ class UserController extends Controller
                 'email' => $request->email
             ]
         );
-        return redirect()->route('users.index')->with('toastNotifications',[
-            'message' => __('User updated succesfully'),
-            'status' => 'ON'
-        ]);
+        $notifications = array(
+
+            'type'=>'success',
+            'title'=>__('User Management'),
+            'message'=>__('User successfully updated.')
+        );
+        return redirect()->route('users.index')->with('notifications', array($notifications));
     }
 
     /**
@@ -137,10 +117,20 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         if(auth()->user()->id == $user->id){
-            return redirect()->route('users.index')->with('warning',__('You can not delete your own account'));
+            $notifications = array(
+                'type'=>'warning',
+                'title'=>__('User Management'),
+                'message'=>__('You can not delete your own account.')
+            );
+            return redirect()->route('users.index')->with('notifications',array($notifications));
         }
         $user->delete();
-        return redirect()->route('users.index')->with('success',__('User deleted succesfully'));
+        $notifications = array(
+            'type'=>'success',
+            'title'=>__('User Management'),
+            'message'=>__('Account successfully deleted.')
+        );
+        return redirect()->route('users.index')->with('notifications',array($notifications));
 
     }
 }

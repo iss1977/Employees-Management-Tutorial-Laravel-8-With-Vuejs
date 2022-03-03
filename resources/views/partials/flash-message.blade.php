@@ -1,4 +1,11 @@
 <!-- Blade for Toast messages  -->
+<!-- $notifications must be an array of associative arrays -->
+
+<?php
+    $notifications = Session::get('notifications', []);
+?>
+
+
 
 <div class="container-fluid position-relative p-0 m-0 d-flex  flex-column align-items-center"
     style="width:100%; height:0;z-index:5000; overflow:visible">
@@ -6,12 +13,11 @@
     <div class="toast-alerts-container">
 
         @if (isset($notifications) && is_array($notifications))
-
             @foreach ($notifications as $notification)
                 @if (is_array($notification))
-                    {{-- Toaster card --}}
 
-                    <div class="toast fade hide">
+                    {{-- Toaster card --}}
+                    <div class="toast fade show">
                         <div class="toast-header">
                             @if (array_key_exists('type', $notification))
                                 @switch($notification['type'])
