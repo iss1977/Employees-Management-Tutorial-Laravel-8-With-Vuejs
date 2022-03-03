@@ -21,18 +21,38 @@ class UserController extends Controller
         $request = request();
 
 
-        $array2send=[
-            'success'=>'Data saved',
-            'success'=>'User created',
-            'error'=>'Not found'
+        $notifications=[
+            [
+                'type'=>'success',
+                'title'=>'Title',
+                'message'=>'Everything fine'
+            ],
+            [
+                'type'=>'danger',
+                'message'=>'Better as last tine'
+            ],
+            [
+                'type'=>'warning',
+                'message'=>'This is a warning maessage'
+            ],
+            [
+                'type'=>'info',
+                'message'=>'This is an info message'
+            ],
+            [
+                'type'=>'notexisting',
+                'message'=>'Gone wrong'
+            ],
+
+
         ];
 
 
-        $request->session()->put('hello', 'trocadello');
-        $request->session()->put('array2sendtoview', $array2send);
+        // $request->session()->put('hello', 'trocadello');
+        //$request->session()->put('array2sendtoview', $array2send);
 
         $users = User::all();
-        return view('users.index', compact('users','request'));
+        return view('users.index', compact('users','request','notifications'));
     }
 
     /**
@@ -102,7 +122,10 @@ class UserController extends Controller
                 'email' => $request->email
             ]
         );
-        return redirect()->route('users.index')->with('message',__('User updated succesfully'));
+        return redirect()->route('users.index')->with('toastNotifications',[
+            'message' => __('User updated succesfully'),
+            'status' => 'ON'
+        ]);
     }
 
     /**
