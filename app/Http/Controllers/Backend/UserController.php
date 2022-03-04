@@ -19,10 +19,10 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if($request->filled('search') && !$request->has('resetsearch') && $request->has('searchbutton') ){ // if search button was pressed and search field is filled
-            $users = User::where('username','like',"%{$request->search}%")->orWhere('email','like',"%{$request->search}%")->get();
+            $users = User::where('username','like',"%{$request->search}%")->orWhere('email','like',"%{$request->search}%")->paginate(15);
             $searchValue = $request->search;
         }else{
-            $users = User::all();
+            $users = User::paginate(10);
             $searchValue='';
         }
         return view('users.index', compact('users', 'searchValue'));
