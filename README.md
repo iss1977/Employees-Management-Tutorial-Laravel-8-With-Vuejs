@@ -89,3 +89,6 @@
 - creating Form Request validator
 - * implementing toast messages
 - implementing search with * reset button
+- *adding pagination to user list
+- * setting up user seeder with Faker
+- implementing change user password in edit user blade + controller
