@@ -87,4 +87,5 @@
 - creating views for view, create and edit the user
 - * moving image assets via webpack from resources to public folder to be prepared for distribution
 - creating Form Request validator
-- * introducing toast messages
+- * implementing toast messages
+- implementing search with * reset button

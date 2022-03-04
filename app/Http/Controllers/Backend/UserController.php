@@ -16,13 +16,16 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-
-
-
-        $users = User::all();
-        return view('users.index', compact('users'));
+        if($request->filled('search') && !$request->has('resetsearch') && $request->has('searchbutton') ){ // if search button was pressed and search field is filled
+            $users = User::where('username','like',"%{$request->search}%")->orWhere('email','like',"%{$request->search}%")->get();
+            $searchValue = $request->search;
+        }else{
+            $users = User::all();
+            $searchValue='';
+        }
+        return view('users.index', compact('users', 'searchValue'));
     }
 
     /**
