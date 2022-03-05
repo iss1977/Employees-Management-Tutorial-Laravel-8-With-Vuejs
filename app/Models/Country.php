@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Country extends Model
 {
     use HasFactory;
+
+    protected $fillable =[
+        'country_code',
+        'name'
+    ];
+
+
+     /**
+     * Get the user that belongs to this country.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
 }

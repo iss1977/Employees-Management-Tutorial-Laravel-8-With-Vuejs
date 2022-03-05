@@ -92,3 +92,5 @@
 - *adding pagination to user list
 - * setting up user seeder with Faker
 - implementing change user password in edit user blade + controller
+- * creating modal confirmation dialog for deletes - template tag / bootstrap / javascript
+- * wrapping up javascript for confirmation modal in seprate javascript file and merge in app.js with webpack mix

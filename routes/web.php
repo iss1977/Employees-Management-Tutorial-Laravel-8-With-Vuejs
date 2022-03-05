@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\ChangePasswordController;
+use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth; // used to hide vscode error. Not necesarry
@@ -29,4 +30,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('users',UserController::class);
     Route::post('users/{user}/change-password', [ChangePasswordController::class,'changePassword'])->name('users.change.password');
+
+    Route::resource('countries', CountryController::class);
 });

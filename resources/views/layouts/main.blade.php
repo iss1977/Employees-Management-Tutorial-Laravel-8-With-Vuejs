@@ -27,6 +27,10 @@
 <body id="page-top">
     @yield('flash-messages')
 
+    <!-- Confirmation dialog -->
+    <x-modals.alert></x-modals.alert>
+    <!-- End confirmation dialog -->
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -77,7 +81,7 @@
                 </a>
                 <div id="collapseSystem" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Country</a>
+                        <a class="collapse-item" href="{{ route('countries.index') }}">Country</a>
                         <a class="collapse-item" href="#">State</a>
                         <a class="collapse-item" href="#">Department</a>
                         <a class="collapse-item" href="#">City</a>

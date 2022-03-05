@@ -11,7 +11,7 @@ class ChangePasswordController extends Controller
 {
     public function changePassword (Request $request, User $user){
         $request->validate([
-            'password' => ['required', 'string', 'min:8', 'confirmed']
+            'password' => ['required', 'string', 'min:4', 'confirmed']
         ]);
 
         $user->update([

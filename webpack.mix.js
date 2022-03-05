@@ -15,13 +15,12 @@ const mix = require('laravel-mix');
 
  mix.js('resources/js/sb-admin-2.js', 'public/js');
 
- mix.js('resources/js/app.js', 'public/js')
+ mix.js(['resources/js/app.js', 'resources/js/other-javascript.js' ], 'public/js/app.js')
     .vue()
     .sass('resources/sass/app.scss', 'public/css');
 
 mix.sass('resources/sass/fontawesome-free.scss','public/css/fontawesome-free');
 
 mix.copy('resources/images/*.*', 'public/images/');
-
 
 mix.version();

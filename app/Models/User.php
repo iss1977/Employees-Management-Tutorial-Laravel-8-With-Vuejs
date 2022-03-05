@@ -44,4 +44,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    /**
+     * Get the country associeted with the user
+     */
+    public function country()
+    {
+        return $this->hasOne(Country::class);
+    }
+
+
 }

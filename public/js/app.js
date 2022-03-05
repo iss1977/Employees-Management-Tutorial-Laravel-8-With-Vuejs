@@ -49796,7 +49796,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\Laravel8-VueJS-Emp
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
 (() => {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -49829,6 +49829,64 @@ Vue.component('example-component', (__webpack_require__(/*! ./components/Example
 var app = new Vue({
   el: '#app'
 });
+})();
+
+// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
+(() => {
+/*!******************************************!*\
+  !*** ./resources/js/other-javascript.js ***!
+  \******************************************/
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+/***********************************************************
+* Confirm delete button action
+* Parameters : event, that -> reference to the pressed button, formElement is the form that has to be sent
+*/
+window.deleteButtonClick = function (event, that, formElement, countryName) {
+  event.preventDefault();
+  event.stopPropagation();
+  var title = that.dataset.confirmationWindowTitle;
+  var message = that.dataset.confirmationWindowText;
+  var actionButtonText = that.dataset.confirmationWindowButton;
+  window.setupConfirmationModal(title, message, actionButtonText, formElement); // confirmationDialogObject will be created and filled
+
+  window.showConfirmationModal();
+};
+
+window.executeFormSubmision = function () {
+  window.confirmationDialogObject.formElement.submit();
+};
+/***********************************************************
+ *  Set up modal window for delete button click confirmation
+ */
+
+
+window.setupConfirmationModal = function (title, message, actionButtonText, form) {
+  console.log('2.Running setupConfirmationModal function'); //check if confirmation dialog object already defined.
+
+  if ((typeof confirmationDialogObject === "undefined" ? "undefined" : _typeof(confirmationDialogObject)) !== 'object') {
+    window.confirmationDialogObject = new Function();
+  } // setup dialog title, message, action button text and callback (on action button click)
+
+
+  confirmationDialogObject.title = typeof title === 'string' ? title : '';
+  confirmationDialogObject.message = typeof message === 'string' ? message : '';
+  confirmationDialogObject.actionButtonText = typeof actionButtonText === 'string' ? actionButtonText : '';
+  confirmationDialogObject.formElement = _typeof(form) === 'object' ? form : '';
+};
+/** Display the confirmation dialog*/
+
+
+window.showConfirmationModal = function () {
+  console.log('4.Running showConfirmationModal function');
+  var temp = document.getElementById("delete-confirmation-modal"); // gets reference to template
+
+  debugger;
+  temp.querySelector('#confirmation-dialog').innerText = "BlaBla";
+  var clon = temp.content.cloneNode(true);
+  document.body.appendChild(clon);
+  $('#confirmation-dialog-modal').modal('show');
+};
 })();
 
 /******/ })()
