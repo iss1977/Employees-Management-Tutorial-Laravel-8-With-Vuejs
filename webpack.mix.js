@@ -15,7 +15,7 @@ const mix = require('laravel-mix');
 
  mix.js('resources/js/sb-admin-2.js', 'public/js');
 
- mix.js(['resources/js/app.js', 'resources/js/other-javascript.js' ], 'public/js/app.js')
+ mix.js(['resources/js/app.js', 'resources/js/delete-modal.js' ], 'public/js/app.js')
     .vue()
     .sass('resources/sass/app.scss', 'public/css');
 

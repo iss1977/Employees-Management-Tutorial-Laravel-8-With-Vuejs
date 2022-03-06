@@ -49833,9 +49833,9 @@ var app = new Vue({
 
 // This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
 (() => {
-/*!******************************************!*\
-  !*** ./resources/js/other-javascript.js ***!
-  \******************************************/
+/*!**************************************!*\
+  !*** ./resources/js/delete-modal.js ***!
+  \**************************************/
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 /***********************************************************
@@ -49862,8 +49862,7 @@ window.executeFormSubmision = function () {
 
 
 window.setupConfirmationModal = function (title, message, actionButtonText, form) {
-  console.log('2.Running setupConfirmationModal function'); //check if confirmation dialog object already defined.
-
+  //check if confirmation dialog object already defined.
   if ((typeof confirmationDialogObject === "undefined" ? "undefined" : _typeof(confirmationDialogObject)) !== 'object') {
     window.confirmationDialogObject = new Function();
   } // setup dialog title, message, action button text and callback (on action button click)
@@ -49881,10 +49880,15 @@ window.showConfirmationModal = function () {
   console.log('4.Running showConfirmationModal function');
   var temp = document.getElementById("delete-confirmation-modal"); // gets reference to template
 
-  debugger;
-  temp.querySelector('#confirmation-dialog').innerText = "BlaBla";
+  temp.content.querySelector('#confirmation-dialog-title').innerText = confirmationDialogObject.title;
+  temp.content.querySelector('#confirmation-dialog-message').innerText = confirmationDialogObject.message;
+  temp.content.querySelector('#confirmation-dialog-button-ok').innerText = confirmationDialogObject.actionButtonText;
   var clon = temp.content.cloneNode(true);
   document.body.appendChild(clon);
+  $('#confirmation-dialog-modal').on('hidden.bs.modal', function (event) {
+    $('#confirmation-dialog-modal').modal('dispose');
+    $('#delete-confirmation-modal-dialog').remove();
+  });
   $('#confirmation-dialog-modal').modal('show');
 };
 })();
