@@ -94,3 +94,8 @@
 - implementing change user password in edit user blade + controller
 - * creating modal confirmation dialog for deletes - template tag / bootstrap / javascript
 - * wrapping up javascript for confirmation modal in seprate javascript file and merge in app.js with webpack mix
+- creating countries views, FormRequests and controllers
+- creating states views, FormRequests and controllers
+- * creating validation FormRequest after hook for country_id validation.
+- TODO : prevent deleting when a state is present in employees table
+- TODO : search in index blade in states view
