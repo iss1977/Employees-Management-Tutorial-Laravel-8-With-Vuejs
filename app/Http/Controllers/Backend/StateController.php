@@ -17,14 +17,17 @@ class StateController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index(Request $request)
-    {
-        $searchValue ='';
+    public function index(Request $request){
 
-        $states = State::paginate(10);
+        if($request->filled('search') && !$request->has('resetsearch') && $request->has('searchbutton') ){ // if search button was pressed and search field is filled
+            $states = State::where('name','like',"%{$request->search}%")->orderBy('name')->paginate(10);
+            $searchValue = $request->search;
+        }else{
+            $states = State::orderBy('name')->paginate(10);
+            $searchValue='';
+        }
 
         return view('states.index',compact('states', 'searchValue'));
-
     }
 
     /**
@@ -121,6 +124,7 @@ class StateController extends Controller
      */
     public function destroy(State $state)
     {
+        //TODO ... check if delete can be done
         $state->delete();
         $notifications = array(
             'type'=>'success',

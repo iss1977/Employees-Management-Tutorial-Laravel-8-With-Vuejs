@@ -44,14 +44,12 @@ class CountryController extends Controller
         ]);
 
         $notifications = array(
-
             'type'=>'success',
             'title'=>__('Country Management'),
             'message'=>__('Country successfully stored to database.')
         );
         return redirect()->route('countries.index')->with('notifications', array($notifications));
     }
-
 
      /**
      * Show the form for editing the specified resource.
@@ -62,11 +60,6 @@ class CountryController extends Controller
     public function edit(Country $country){
         return view('countries.edit', compact('country'));
     }
-
-
-
-
-
 
         /**
      * Update the specified resource in storage.

@@ -99,3 +99,7 @@
 - * creating validation FormRequest after hook for country_id validation.
 - TODO : prevent deleting when a state is present in employees table
 - TODO : search in index blade in states view
+- * update search for user, country and state for better usere experence. Reset search field added.
+
+
+
