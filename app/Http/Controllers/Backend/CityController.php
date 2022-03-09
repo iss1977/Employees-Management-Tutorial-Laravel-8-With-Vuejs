@@ -109,7 +109,17 @@ class CityController extends Controller
      */
     public function update(CityUpdateRequest $request, City $city)
     {
-        //
+        $StateToAssociate = State::find($city->state->id);
+        $city->state()->associate($StateToAssociate);
+        $city->name = $request->name;
+        $city->save();
+
+        $notifications = array(
+            'type'=>'success',
+            'title'=>__('City Management'),
+            'message'=>__('City successfully updated.')
+        );
+        return redirect()->route('cities.index')->with('notifications', array($notifications));
     }
 
     /**
@@ -120,6 +130,13 @@ class CityController extends Controller
      */
     public function destroy(City $city)
     {
-        //
+        $city->delete();
+
+        $notifications = array(
+            'type'=>'success',
+            'title'=>__('City Management'),
+            'message'=>__('City successfully deleted.')
+        );
+        return redirect()->route('cities.index')->with('notifications',array($notifications));
     }
 }

@@ -12,11 +12,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Edit city') }}</div>
-
+                    <div class="card-header d-flex justify-content-between">
+                        {{ __('Edit city') }}
+                        <a href="{{ URL::previous() }}">Back</a>
+                    </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('cities.store') }}">
+                        <form method="POST" action="{{ route('cities.update', $city->id) }}">
                             @csrf
+                            @method('PUT')
 
                             <!-- Country List-->
                             <div class="row mb-3">
