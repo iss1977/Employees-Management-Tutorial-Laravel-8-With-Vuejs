@@ -81,7 +81,7 @@ class CityController extends Controller
      */
     public function show(City $city)
     {
-        //
+
     }
 
     /**
@@ -92,7 +92,12 @@ class CityController extends Controller
      */
     public function edit(City $city)
     {
-        //
+        $currentState = $city->state;
+        $currentCountry = $currentState->country;
+
+        $countries = Country::all();
+        $states = $currentCountry->states;
+        return view('cities.edit', compact('countries','states','city','currentState','currentCountry'));
     }
 
     /**
