@@ -12,16 +12,21 @@ class State extends Model
     protected $fillable = [
         'country_id',
         'name'
-      ];
-
-
+    ];
 
     /**
      * Get the country of this state
      */
 
-     public function country(){
-        return $this->belongsTo(Country::class);
-     }
+    public function country(){
+    return $this->belongsTo(Country::class);
+    }
+
+    /**
+     * Get the cities from state
+     */
+    public function cities(){
+        return $this->hasMany(City::class);
+    }
 
 }

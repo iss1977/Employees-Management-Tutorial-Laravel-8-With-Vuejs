@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="Dashboard for Employee management" />
     <meta name="author" content="Laraveller / iss1977" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Dashboard</title>
 
     <!-- Custom fonts for this template-->
@@ -84,7 +85,7 @@
                         <a class="collapse-item" href="{{ route('countries.index') }}">Country</a>
                         <a class="collapse-item" href="{{ route('states.index') }}">State</a>
                         <a class="collapse-item" href="#">Department</a>
-                        <a class="collapse-item" href="#">City</a>
+                        <a class="collapse-item" href="{{ route('cities.index') }}">City</a>
                     </div>
                 </div>
             </li>
@@ -403,7 +404,7 @@
     <script src="{{ mix('js/app.js') }}"></script>
     <script src="{{ mix('js/sb-admin-2.js') }}"></script> <!-- Includes bootstrap -->
 
-     <!-- Here will be additional scripts added as needed by the views. -->
+    <!-- Here will be additional scripts added as needed by the views. -->
     @stack('scripts')
 </body>
 </html>

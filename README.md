@@ -100,6 +100,9 @@
 - TODO : prevent deleting when a state is present in employees table
 - TODO : search in index blade in states view
 - * update search for user, country and state for better usere experence. Reset search field added.
+- creating views, controllers and validation for cities
+- * adding extra functionality to choose country-> state -> city for better user experience :
+    user chooses Country -> gets States from the Country: Ajax controller, route, javascript
 
 
 

@@ -1,10 +1,13 @@
 <?php
 
-use App\Http\Controllers\Backend\ChangePasswordController;
-use App\Http\Controllers\Backend\CountryController;
-use App\Http\Controllers\Backend\StateController;
-use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Ajax\StatesAjaxController;
+use App\Http\Controllers\Backend\CityController;
+use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\StateController;
+use App\Http\Controllers\Backend\CountryController;
+use App\Http\Controllers\Backend\ChangePasswordController;
 use Illuminate\Support\Facades\Auth; // used to hide vscode error. Not necesarry
 
 
@@ -38,5 +41,15 @@ Route::group(['middleware' => ['auth']], function () {
 
     /** States */
     Route::resource('states', StateController::class);
+
+    /** Cities */
+    Route::resource('cities', CityController::class);
+
+
+
 });
+
+    /** Ajax Requests */
+    /** State list of country */
+    Route::post('statesofcountry', [StatesAjaxController::class, 'ajaxGetStatesOfCountry'])->name('statesofcountry');
 
