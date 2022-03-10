@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\StateController;
 use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\ChangePasswordController;
+use App\Http\Controllers\Backend\DepartmentController;
 use Illuminate\Support\Facades\Auth; // used to hide vscode error. Not necesarry
 
 
@@ -45,7 +46,8 @@ Route::group(['middleware' => ['auth']], function () {
     /** Cities */
     Route::resource('cities', CityController::class);
 
-
+    /** Departments */
+    Route::resource('departments', DepartmentController::class);
 
 });
 
