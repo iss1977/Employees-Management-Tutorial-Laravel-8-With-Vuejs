@@ -103,6 +103,8 @@
 - creating views, controllers and validation for cities
 - * adding extra functionality to choose country-> state -> city for better user experience :
     user chooses Country -> gets States from the Country: Ajax controller, route, javascript
-
+- creating views, controllers and validation for departments
+- adding Vue and VueRouter
+- creating employees vue component structure
 
 

@@ -55,3 +55,9 @@ Route::group(['middleware' => ['auth']], function () {
     /** State list of country */
     Route::post('statesofcountry', [StatesAjaxController::class, 'ajaxGetStatesOfCountry'])->name('statesofcountry');
 
+
+
+    /** Api Routes */
+    Route::get('{any}', function(){
+        return view('employees.index');
+    })->where('{any}','.*');
