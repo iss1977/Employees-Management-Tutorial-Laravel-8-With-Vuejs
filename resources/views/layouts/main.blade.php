@@ -59,7 +59,7 @@
 
             <!-- Nav Item - Employee Management -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/employees">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Employee Management</span></a>
             </li>
@@ -351,9 +351,9 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <div class="row">
+
                         @yield('content')
-                    </div>
+
 
                 </div>
                 <!-- /.container-fluid -->

@@ -1,0 +1,69 @@
+<template>
+    <div>
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4 container-fluid">
+            <h1 class="h3 mb-0 text-gray-800">Employees</h1>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+
+        </div>
+
+        <div class="container">
+            <div class="row flex-nowrap">
+                <form>
+                    <div class="form-row align-items-center">
+                        <div class="col-auto">
+                            <label class="sr-only" for="inlineFormInput">Country</label>
+                            <input type="text" class="form-control mb-2 flex-shrink-1 " id="inlineFormInput"
+                                placeholder="" name="search" value = "">
+                        </div>
+                        <div class="col-auto">
+                            <input type="submit" class="btn btn-primary mb-2" value="Search" name="searchbutton">
+                            <input type="submit" class="btn btn-outline-dark mb-2" value="Reset search" name="resetsearch">
+                        </div>
+                    </div>
+                </form>
+                <a href="#" class="ml-auto btn btn-primary mb-2">
+                    <i class="fas fa-plus mr-2"></i>Create
+                </a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="w-100" style="overflow-x:auto;">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#Id</th>
+                                <th scope="col">First name</th>
+                                <th scope="col">Last name</th>
+                                <th scope="col">Adress</th>
+                                <th scope="col">Department</th>
+                                <th scope="col" style="text-align:center">Manage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">  </th>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td> </td>
+                                <td style="text-align:center" class="d-flex justify-content-center">
+                                    <a href="#" class="btn btn-success">Edit </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style>
+</style>
