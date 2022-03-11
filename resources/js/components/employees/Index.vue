@@ -23,9 +23,7 @@
                         </div>
                     </div>
                 </form>
-                <a href="#" class="ml-auto btn btn-primary mb-2">
-                    <i class="fas fa-plus mr-2"></i>Create
-                </a>
+                <router-link :to="{name: 'EmployeesCreate'}" class="ml-auto btn btn-primary mb-2" ><i class="fas fa-plus mr-2"></i>Create</router-link>
             </div>
         </div>
         <div class="container">
@@ -62,7 +60,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+    mounted() {
+        console.log('Component mounted.')
+    }
+};
 </script>
 
 <style>

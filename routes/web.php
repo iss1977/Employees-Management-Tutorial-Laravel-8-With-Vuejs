@@ -58,6 +58,12 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     /** Api Routes */
+
+
     Route::get('{any}', function(){
         return view('employees.index');
-    })->where('{any}','.*');
+    })->where('any','.*');
+
+    // Route::any('/', function () {
+    //     return view('employees.index');
+    // });

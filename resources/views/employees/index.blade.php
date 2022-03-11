@@ -9,7 +9,7 @@
 @section('content')
 
     <div id="app">
-        <exployees-index></exployees-index>
+        <router-view></router-view>
     </div>
 
 @endsection

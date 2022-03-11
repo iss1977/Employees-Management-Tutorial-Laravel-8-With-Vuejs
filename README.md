@@ -69,7 +69,8 @@
 
 - * Spin up a docker app with 3 containers using Laravel Sail. Modify SAIL configuration file to use Laravel 8.x.
 <i>default SAIL configuration is using Laravel 9.0</i>
-- Installing Laravel/ui + * rollback to bootstrap 4.6
+- Installing Laravel/ui 
+- * rollback to bootstrap 4.6
 - Generate login / registration scaffolding -> _php artisan ui bootstrap --auth_
 - adding vue via : _php artisan ui vue_
 - creating migrations
@@ -106,5 +107,7 @@
 - creating views, controllers and validation for departments
 - adding Vue and VueRouter
 - creating employees vue component structure
+- adding vue datepicker
+- creating controller & route for api calls from Vue components
 
 
