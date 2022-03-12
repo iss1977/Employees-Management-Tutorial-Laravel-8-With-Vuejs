@@ -109,5 +109,5 @@
 - creating employees vue component structure
 - adding vue datepicker
 - creating controller & route for api calls from Vue components
-
+- creating api calls from Vue component and populating select elements
 

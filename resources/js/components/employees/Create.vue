@@ -45,26 +45,42 @@
 
                                 <!-- Country -->
                                 <div class="row mb-3">
-                                    <label class="col-md-4 col-form-label text-md-end">Country</label>
+                                    <label class="col-md-4 col-form-label text-md-end" for="select_country">Country</label>
                                     <div class="col-md-6">
                                         <!-- Countries Dropdown -->
-                                        <select id="select_country" name="country_id" class="custom-select" required>
-                                            <option value=""> Select country --</option>
-                                            <!-- Read Countries -->
-                                            <option value="">Option</option>
+                                        <select id="select_country" name="country_id" class="custom-select" required
+                                        v-model="form.country_id"
+                                        @change="getStatesOfCountry()">
+                                            <option value="" disabled selected >-- Select country --</option>
+                                            <option v-for="country in countries" :key="country.id" :value="country.id">{{ country.name }}</option>
                                         </select>
                                     </div>
                                 </div>
 
                                 <!-- State -->
                                 <div class="row mb-3">
-                                    <label class="col-md-4 col-form-label text-md-end">State</label>
+                                    <label class="col-md-4 col-form-label text-md-end" for="select_state">State</label>
                                     <div class="col-md-6">
                                         <!-- States Dropdown -->
-                                        <select id="select_state" name="state_id" class="custom-select" required>
-                                            <option value=""> Select state --</option>
-                                            <!-- Read Statesa -->
-                                            <option value="">Option</option>
+                                        <select id="select_state" name="state_id" class="custom-select" required
+                                        v-model="form.state_id"
+                                        @change="getCitiesOfState()">
+                                            <option value="" disabled selected>--Select state --</option>
+                                            <option v-for="state in states" :key="state.id"  :value="state.id">{{state.name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- City -->
+                                <div class="row mb-3">
+                                    <label class="col-md-4 col-form-label text-md-end" for="select_city">City</label>
+                                    <div class="col-md-6">
+                                        <!-- Cities Dropdown -->
+                                        <select id="select_city" name="city_id" class="custom-select" required>
+                                            <option value="" disabled selected >-- Select city --</option>
+                                            <option value="" v-for="city in cities" :key="city.id" :value="city.id">{{ city.name }}</option>
+                                            <!-- Read cities -->
+
                                         </select>
                                     </div>
                                 </div>
@@ -74,19 +90,6 @@
                                     <label for="Zip code" class="col-md-4 col-form-label text-md-end">Zip code</label>
                                     <div class="col-md-6">
                                         <input type="text" id="Zip code" class="form-control" name="Zip code" value=""/>
-                                    </div>
-                                </div>
-
-                                <!-- City -->
-                                <div class="row mb-3">
-                                    <label class="col-md-4 col-form-label text-md-end">City</label>
-                                    <div class="col-md-6">
-                                        <!-- Cities Dropdown -->
-                                        <select id="select_city" name="city_id" class="custom-select" required>
-                                            <option value=""> Select city --</option>
-                                            <!-- Read cities -->
-                                            <option value="">Option</option>
-                                        </select>
                                     </div>
                                 </div>
 
@@ -134,12 +137,25 @@ export default {
     components: {
         Datepicker
     },
-    data(){
+    data: function (){
         return{
             countries:[],
             states:[],
             departments:[],
-            cities:[]
+            cities:[],
+            form : {
+                first_name: '',
+                last_name : '',
+                middle_name:'',
+                address: '',
+                country_id: '',
+                state_id : '',
+                department_id : '',
+                city_id : '',
+                zip_code :'',
+                birthdate: null,
+                date_hired : null,
+            }
         }
     },
     created(){
@@ -154,7 +170,28 @@ export default {
                 .catch(error => {
                     console.error('Error reading countries')
                 })
+        },
+        getStatesOfCountry(){
+            var getRoute = "/api/employees/"+this.form.country_id+"/states";
+            axios.get(getRoute,[{ responseType: 'json'}])
+                .then(res => {
+                    this.states = res.data
+                })
+                .catch(error => {
+                    console.error('Error reading countries')
+                })
+        },
+        getCitiesOfState(){
+            var getRoute=`/api/employees/${this.form.state_id}/cities`;
+            axios.get(getRoute,[{ responseType: 'json'}])
+                .then(res => {
+                    this.cities = res.data
+                })
+                .catch(error => {
+                    console.error('Error reading countries')
+                })
         }
+
     }
 
 }
