@@ -2197,7 +2197,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2214,10 +2213,10 @@ __webpack_require__.r(__webpack_exports__);
         last_name: '',
         middle_name: '',
         address: '',
-        country_id: '',
-        state_id: '',
+        country_id: 0,
+        state_id: 0,
         department_id: '',
-        city_id: '',
+        city_id: 0,
         zip_code: '',
         birthdate: null,
         date_hired: null
@@ -2231,6 +2230,8 @@ __webpack_require__.r(__webpack_exports__);
     getCountries: function getCountries() {
       var _this = this;
 
+      console.log('Start get countries');
+      this.states = [];
       axios.get('/api/employees/countries').then(function (res) {
         _this.countries = res.data;
       })["catch"](function (error) {
@@ -2240,7 +2241,11 @@ __webpack_require__.r(__webpack_exports__);
     getStatesOfCountry: function getStatesOfCountry() {
       var _this2 = this;
 
+      this.cities = [];
+      this.form.state_id = 0;
+      this.form.city_id = 0;
       var getRoute = "/api/employees/" + this.form.country_id + "/states";
+      console.log(getRoute);
       axios.get(getRoute, [{
         responseType: 'json'
       }]).then(function (res) {
@@ -2252,6 +2257,7 @@ __webpack_require__.r(__webpack_exports__);
     getCitiesOfState: function getCitiesOfState() {
       var _this3 = this;
 
+      this.form.city_id = 0;
       var getRoute = "/api/employees/".concat(this.form.state_id, "/cities");
       axios.get(getRoute, [{
         responseType: 'json'
@@ -37970,11 +37976,7 @@ var render = function () {
                           },
                         ],
                         staticClass: "custom-select",
-                        attrs: {
-                          id: "select_country",
-                          name: "country_id",
-                          required: "",
-                        },
+                        attrs: { id: "select_country", required: "" },
                         on: {
                           change: [
                             function ($event) {
@@ -37994,16 +37996,17 @@ var render = function () {
                                   : $$selectedVal[0]
                               )
                             },
-                            function ($event) {
-                              return _vm.getStatesOfCountry()
-                            },
+                            _vm.getStatesOfCountry,
                           ],
                         },
                       },
                       [
                         _c(
                           "option",
-                          { attrs: { value: "", disabled: "", selected: "" } },
+                          {
+                            attrs: { disabled: "", selected: "" },
+                            domProps: { value: 0 },
+                          },
                           [_vm._v("-- Select country --")]
                         ),
                         _vm._v(" "),
@@ -38070,17 +38073,18 @@ var render = function () {
                                   : $$selectedVal[0]
                               )
                             },
-                            function ($event) {
-                              return _vm.getCitiesOfState()
-                            },
+                            _vm.getCitiesOfState,
                           ],
                         },
                       },
                       [
                         _c(
                           "option",
-                          { attrs: { value: "", disabled: "", selected: "" } },
-                          [_vm._v("--Select state --")]
+                          {
+                            attrs: { disabled: "", selected: "" },
+                            domProps: { value: 0 },
+                          },
+                          [_vm._v("-- Select state --")]
                         ),
                         _vm._v(" "),
                         _vm._l(_vm.states, function (state) {
@@ -38110,28 +38114,54 @@ var render = function () {
                     _c(
                       "select",
                       {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.city_id,
+                            expression: "form.city_id",
+                          },
+                        ],
                         staticClass: "custom-select",
                         attrs: {
                           id: "select_city",
                           name: "city_id",
                           required: "",
                         },
+                        on: {
+                          change: function ($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function (o) {
+                                return o.selected
+                              })
+                              .map(function (o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.form,
+                              "city_id",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          },
+                        },
                       },
                       [
                         _c(
                           "option",
-                          { attrs: { value: "", disabled: "", selected: "" } },
+                          {
+                            attrs: { disabled: "", selected: "" },
+                            domProps: { value: 0 },
+                          },
                           [_vm._v("-- Select city --")]
                         ),
                         _vm._v(" "),
                         _vm._l(_vm.cities, function (city) {
                           return _c(
                             "option",
-                            {
-                              key: city.id,
-                              attrs: { value: "" },
-                              domProps: { value: city.id },
-                            },
+                            { key: city.id, domProps: { value: city.id } },
                             [_vm._v(_vm._s(city.name))]
                           )
                         }),

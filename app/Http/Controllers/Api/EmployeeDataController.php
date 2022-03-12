@@ -16,7 +16,8 @@ class EmployeeDataController extends Controller
 
     public function states(Country $country){
         $states = $country->states()->select('id','name')->get();
-        return response()->json($states);
+        $response = response()->json($states);
+        return $response;
     }
 
     public function cities(State $state){
