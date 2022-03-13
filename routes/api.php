@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\EmployeeController;
 use App\Http\Controllers\Api\EmployeeDataController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,5 +25,7 @@ Route::get('/employees/{country}/states',[EmployeeDataController::class,'states'
 Route::get('/employees/departments',[EmployeeDataController::class,'departments']);
 Route::get('/employees/{state}/cities',[EmployeeDataController::class,'cities']);
 
+
+Route::get('/employees',[EmployeeController::class,'index']);
 Route::post('/employees/create',[EmployeeDataController::class,'create']);
 

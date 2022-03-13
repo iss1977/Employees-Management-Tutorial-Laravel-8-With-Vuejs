@@ -23,4 +23,31 @@ class Employee extends Model
         'date_hired' ,
     ];
 
+    /** the following cast is needed if we don't have a "prepareForValidation" method in "EmployeeStoreRequest" form validation */
+    /** it's work with or without it */
+    protected $cast = [
+        'birthdate' => 'datetime: Y-m-d',
+        'date_hired' => 'datetime:Y-m-d'
+    ];
+
+    public function country(){
+        return $this->belongsTo(Country::class);
+    }
+
+    public function state(){
+        return $this->belongsTo(State::class);
+    }
+
+    public function city(){
+        return $this->belongsTo(City::class);
+    }
+
+    public function department(){
+        return $this->belongsTo(Department::class);
+    }
+
+
+
+
+
 }

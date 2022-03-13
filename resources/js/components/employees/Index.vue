@@ -41,12 +41,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">  </th>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
-                                <td> </td>
+                            <tr v-for="employee in employees" :key="employee.id">
+                                <th scope="row">#{{ employee.id}}  </th>
+                                <td> {{ employee.first_name}} </td>
+                                <td> {{ employee.last_name}} </td>
+                                <td> {{ employee.address}} </td>
+                                <td> {{ employee.department.name }} </td>
                                 <td style="text-align:center" class="d-flex justify-content-center">
                                     <a href="#" class="btn btn-success">Edit </a>
                                 </td>
@@ -60,9 +60,31 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
+    data : function(){
+        return {
+            employees:[]
+        }
+    },
+    created(){
+        this.getEmployees();
+    },
     mounted() {
         console.log('Component mounted.')
+    },
+    methods : {
+        getEmployees(){
+            axios.get('/api/employees')
+            .then( res => {
+                console.log(res.data)
+                this.employees = res.data.data; // Laravel resource  is wrapping the response data in a "data" key.
+            })
+            .catch(error => {
+                console.log(error)
+            })
+            }
     }
 };
 </script>

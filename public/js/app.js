@@ -2345,6 +2345,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2406,9 +2408,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      employees: []
+    };
+  },
+  created: function created() {
+    this.getEmployees();
+  },
   mounted: function mounted() {
     console.log('Component mounted.');
+  },
+  methods: {
+    getEmployees: function getEmployees() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/employees').then(function (res) {
+        console.log(res.data);
+        _this.employees = res.data.data; // Laravel resource  is wrapping the response data in a "data" key.
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   }
 });
 
@@ -60052,7 +60075,43 @@ var render = function () {
       ),
     ]),
     _vm._v(" "),
-    _vm._m(2),
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "div",
+          { staticClass: "w-100", staticStyle: { "overflow-x": "auto" } },
+          [
+            _c("table", { staticClass: "table table-hover" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.employees, function (employee) {
+                  return _c("tr", { key: employee.id }, [
+                    _c("th", { attrs: { scope: "row" } }, [
+                      _vm._v("#" + _vm._s(employee.id) + "  "),
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(" " + _vm._s(employee.first_name) + " ")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(" " + _vm._s(employee.last_name) + " ")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(" " + _vm._s(employee.address) + " ")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(" " + _vm._s(employee.department.name) + " "),
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(3, true),
+                  ])
+                }),
+                0
+              ),
+            ]),
+          ]
+        ),
+      ]),
+    ]),
   ])
 }
 var staticRenderFns = [
@@ -60133,72 +60192,42 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#Id")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("First name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Last name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Adress")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Department")]),
+        _vm._v(" "),
         _c(
-          "div",
-          { staticClass: "w-100", staticStyle: { "overflow-x": "auto" } },
-          [
-            _c("table", { staticClass: "table table-hover" }, [
-              _c("thead", [
-                _c("tr", [
-                  _c("th", { attrs: { scope: "col" } }, [_vm._v("#Id")]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [_vm._v("First name")]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Last name")]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Adress")]),
-                  _vm._v(" "),
-                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Department")]),
-                  _vm._v(" "),
-                  _c(
-                    "th",
-                    {
-                      staticStyle: { "text-align": "center" },
-                      attrs: { scope: "col" },
-                    },
-                    [_vm._v("Manage")]
-                  ),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("tbody", [
-                _c("tr", [
-                  _c("th", { attrs: { scope: "row" } }),
-                  _vm._v(" "),
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td"),
-                  _vm._v(" "),
-                  _c("td"),
-                  _vm._v(" "),
-                  _c(
-                    "td",
-                    {
-                      staticClass: "d-flex justify-content-center",
-                      staticStyle: { "text-align": "center" },
-                    },
-                    [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "btn btn-success",
-                          attrs: { href: "#" },
-                        },
-                        [_vm._v("Edit ")]
-                      ),
-                    ]
-                  ),
-                ]),
-              ]),
-            ]),
-          ]
+          "th",
+          { staticStyle: { "text-align": "center" }, attrs: { scope: "col" } },
+          [_vm._v("Manage")]
         ),
       ]),
     ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "td",
+      {
+        staticClass: "d-flex justify-content-center",
+        staticStyle: { "text-align": "center" },
+      },
+      [
+        _c("a", { staticClass: "btn btn-success", attrs: { href: "#" } }, [
+          _vm._v("Edit "),
+        ]),
+      ]
+    )
   },
 ]
 render._withStripped = true

@@ -114,3 +114,7 @@
 - departments with api calls in employees create
 - adding _momentjs_ to the project
 - * transform request data before validation in Backend
+- creating resource for Employees.
+- creating index view for employees
+- TODO : pagination for employee index view
+
