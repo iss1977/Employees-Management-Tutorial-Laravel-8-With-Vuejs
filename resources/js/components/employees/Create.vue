@@ -92,6 +92,18 @@
                                     </div>
                                 </div>
 
+                                <!-- Departments -->
+                                <div class="row mb-3">
+                                    <label class="col-md-4 col-form-label text-md-end" for="select_department">Department</label>
+                                    <div class="col-md-6">
+                                        <!-- Cities Dropdown -->
+                                        <select id="select_department" class="custom-select" required v-model="form.department_id">
+                                            <option :value="0" disabled selected >-- Select Department --</option>
+                                            <option v-for="department in departments" :key="department.id" :value="department.id">{{ department.name }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <!-- Date of birth -->
                                 <div class="row mb-3 form-group">
                                     <label for="address" class="col-md-4 col-form-label text-md-end">Date of birth</label>
@@ -149,7 +161,7 @@ export default {
                 address: '',
                 country_id: 0,
                 state_id : 0,
-                department_id : '',
+                department_id : 0,
                 city_id : 0,
                 zip_code :'',
                 birthdate: null,
@@ -159,6 +171,7 @@ export default {
     },
     created(){
         this.getCountries();
+        this.getDepartments();
     },
     methods:{
         getCountries(){
@@ -185,7 +198,7 @@ export default {
                     this.states = res.data;
                 })
                 .catch(error => {
-                    console.error('Error reading countries')
+                    console.error('Error reading states')
                 })
         },
         getCitiesOfState(){
@@ -196,11 +209,23 @@ export default {
                     this.cities = res.data
                 })
                 .catch(error => {
-                    console.error('Error reading countries')
+                    console.error('Error reading cities')
+                }
+            )
+        },
+        getDepartments(){
+            this.form.city_id = 0
+            var getRoute=`/api/employees/departments`;
+            axios.get(getRoute,[{ responseType: 'json'}])
+                .then(res => {
+                    this.departments = res.data
                 })
-        }
-
-    }
+                .catch(error => {
+                    console.error('Error reading departments')
+                }
+            )
+        },
+    }//methods()
 
 }
 </script>

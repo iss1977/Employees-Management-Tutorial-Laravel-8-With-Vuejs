@@ -110,4 +110,5 @@
 - adding vue datepicker
 - creating controller & route for api calls from Vue components
 - creating api calls from Vue component and populating select elements
-
+- * adding _jsconfig.json_ to configure Vetur for VSCode
+- departments with api calls in employees create

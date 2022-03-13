@@ -6,6 +6,7 @@ use App\Models\State;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 
 class EmployeeDataController extends Controller
 {
@@ -16,12 +17,16 @@ class EmployeeDataController extends Controller
 
     public function states(Country $country){
         $states = $country->states()->select('id','name')->get();
-        $response = response()->json($states);
-        return $response;
+        return response()->json($states);
     }
 
     public function cities(State $state){
         $cities = $state->cities()->select('id','name')->get();
         return response()->json($cities);
+    }
+
+    public function departments(){
+        $departments = Department::all();
+        return response()->json($departments);
     }
 }

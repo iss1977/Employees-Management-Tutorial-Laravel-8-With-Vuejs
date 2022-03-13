@@ -1,0 +1,10 @@
+{
+    "_comment": "This file is created to configure Vetur for VSCode",
+    "include": [
+        "./resources/js/**/*"
+    ],
+    "eslint.validate": [
+        "javascript",
+        "vue"
+    ]
+}
