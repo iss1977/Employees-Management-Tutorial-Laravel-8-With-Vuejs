@@ -10,12 +10,13 @@
                         </div>
 
                         <div class="card-body">
-                            <form>
+                            <form @submit.prevent="submitForm">
                                 <!-- First name -->
                                 <div class="row mb-3">
                                     <label for="first_name" class="col-md-4 col-form-label text-md-end">First name</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="first_name" class="form-control" name="first_name" value="" autofocus />
+                                        <input type="text" id="first_name" class="form-control" value="" autofocus
+                                        v-model="form.first_name"/>
                                     </div>
                                 </div>
 
@@ -23,7 +24,8 @@
                                 <div class="row mb-3">
                                     <label for="middle_name" class="col-md-4 col-form-label text-md-end">Middle name</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="middle_name" class="form-control" name="middle_name" value=""/>
+                                        <input type="text" id="middle_name" class="form-control" value=""
+                                        v-model="form.middle_name"/>
                                     </div>
                                 </div>
 
@@ -31,7 +33,8 @@
                                 <div class="row mb-3">
                                     <label for="last_name" class="col-md-4 col-form-label text-md-end">Last name</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="last_name" class="form-control" name="last_name" value=""/>
+                                        <input type="text" id="last_name" class="form-control" value=""
+                                        v-model="form.last_name"/>
                                     </div>
                                 </div>
 
@@ -39,7 +42,8 @@
                                 <div class="row mb-3">
                                     <label for="address" class="col-md-4 col-form-label text-md-end">Address</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="address" class="form-control" name="address" value=""/>
+                                        <input type="text" id="address" class="form-control"  value=""
+                                        v-model="form.address"/>
                                     </div>
                                 </div>
 
@@ -61,7 +65,7 @@
                                     <label class="col-md-4 col-form-label text-md-end" for="select_state">State</label>
                                     <div class="col-md-6">
                                         <!-- States Dropdown -->
-                                        <select id="select_state" name="state_id" class="custom-select" required
+                                        <select id="select_state" class="custom-select" required
                                         v-model="form.state_id"
                                         @change="getCitiesOfState">
                                             <option :value="0" disabled selected>-- Select state --</option>
@@ -75,7 +79,7 @@
                                     <label class="col-md-4 col-form-label text-md-end" for="select_city">City</label>
                                     <div class="col-md-6">
                                         <!-- Cities Dropdown -->
-                                        <select id="select_city" name="city_id" class="custom-select" required v-model="form.city_id">
+                                        <select id="select_city" class="custom-select" required v-model="form.city_id">
                                             <option :value="0" disabled selected >-- Select city --</option>
                                             <option v-for="city in cities" :key="city.id" :value="city.id">{{ city.name }}</option>
                                             <!-- Read cities -->
@@ -86,9 +90,10 @@
 
                                 <!-- Zip code -->
                                 <div class="row mb-3">
-                                    <label for="Zip code" class="col-md-4 col-form-label text-md-end">Zip code</label>
+                                    <label for="zip_code" class="col-md-4 col-form-label text-md-end">Zip code</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="Zip code" class="form-control" name="Zip code" value=""/>
+                                        <input type="text" id="zip_code" class="form-control" value=""
+                                        v-model="form.zip_code"/>
                                     </div>
                                 </div>
 
@@ -108,7 +113,8 @@
                                 <div class="row mb-3 form-group">
                                     <label for="address" class="col-md-4 col-form-label text-md-end">Date of birth</label>
                                     <div class="col-md-6">
-                                        <datepicker input-class="form-control bg-white"></datepicker>
+                                        <datepicker input-class="form-control bg-white"
+                                        v-model="form.birthdate"></datepicker>
                                     </div>
                                 </div>
 
@@ -117,7 +123,8 @@
                                 <div class="row mb-3 form-group">
                                     <label for="address" class="col-md-4 col-form-label text-md-end">Date hired</label>
                                     <div class="col-md-6">
-                                        <datepicker input-class="form-control bg-white"></datepicker>
+                                        <datepicker input-class="form-control bg-white"
+                                        v-model="form.date_hired"></datepicker>
                                     </div>
                                 </div>
 
@@ -142,7 +149,9 @@
 </template>
 
 <script>
+import axios from 'axios';
 import Datepicker from 'vuejs-datepicker';
+import moment from "moment";
 
 export default {
     components: {
@@ -224,6 +233,31 @@ export default {
                     console.error('Error reading departments')
                 }
             )
+        },
+        submitForm(){
+            axios.post('/api/employees/create',
+            {
+                first_name: this.form.first_name,
+                last_name: this.form.last_name,
+                middle_name: this.form.middle_name,
+                address: this.form.address,
+                country_id: this.form.country_id,
+                state_id: this.form.state_id,
+                department_id: this.form.department_id,
+                city_id: this.form.city_id,
+                zip_code: this.form.zip_code,
+                birthdate: this.format_date(this.form.birthdate),
+                date_hired: this.format_date(this.form.date_hired),
+            }
+            ).then(res => {
+                console.log(res);
+            });
+
+        },
+        format_date(value){
+            if(value){
+                return moment(String(value)).format('YYYYMMDD')
+            }
         },
     }//methods()
 

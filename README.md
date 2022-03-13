@@ -112,3 +112,5 @@
 - creating api calls from Vue component and populating select elements
 - * adding _jsconfig.json_ to configure Vetur for VSCode
 - departments with api calls in employees create
+- adding _momentjs_ to the project
+- * transform request data before validation in Backend

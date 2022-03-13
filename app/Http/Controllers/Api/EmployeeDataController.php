@@ -6,7 +6,9 @@ use App\Models\State;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EmployeeStoreRequest;
 use App\Models\Department;
+use App\Models\Employee;
 
 class EmployeeDataController extends Controller
 {
@@ -29,4 +31,10 @@ class EmployeeDataController extends Controller
         $departments = Department::all();
         return response()->json($departments);
     }
+
+    public function create(EmployeeStoreRequest $request){
+        $employee = Employee::create($request->validated());
+        return response()->json($employee);
+    }
+
 }
