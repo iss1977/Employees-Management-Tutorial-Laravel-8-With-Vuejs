@@ -27,5 +27,5 @@ Route::get('/employees/{state}/cities',[EmployeeDataController::class,'cities'])
 
 
 Route::get('/employees',[EmployeeController::class,'index']);
-Route::post('/employees/create',[EmployeeDataController::class,'create']);
-
+Route::post('/employees/create',[EmployeeDataController::class,'create']); //todo: move this into the correct controller
+Route::delete('/employees/{employee}',[EmployeeController::class,'destroy']);

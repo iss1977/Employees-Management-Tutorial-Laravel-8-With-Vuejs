@@ -117,4 +117,9 @@
 - creating resource for Employees.
 - creating index view for employees
 - TODO : pagination for employee index view
+- TODO : Move create method of employees into the EmployeeController
+
+- Implement delete employee
+- TODO : Confirmation for delete and delete confirmation
+
 
