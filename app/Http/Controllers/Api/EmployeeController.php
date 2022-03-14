@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\EmployeeResource;
+use App\Http\Requests\EmployeeStoreRequest;
+use App\Http\Resources\EmployeeSingleResource;
 
 class EmployeeController extends Controller
 {
@@ -36,10 +38,11 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(EmployeeStoreRequest $request){
+        $employee = Employee::create($request->validated());
+        return response()->json($employee);
     }
+
 
     /**
      * Display the specified resource.
@@ -47,9 +50,10 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Employee $employee)
     {
-        //
+        $return = new EmployeeSingleResource($employee);
+        return  $return;
     }
 
     /**

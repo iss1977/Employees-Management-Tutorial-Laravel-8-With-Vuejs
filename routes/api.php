@@ -25,7 +25,15 @@ Route::get('/employees/{country}/states',[EmployeeDataController::class,'states'
 Route::get('/employees/departments',[EmployeeDataController::class,'departments']);
 Route::get('/employees/{state}/cities',[EmployeeDataController::class,'cities']);
 
+Route::get('/employees/complete-data/{employee}',[EmployeeDataController::class,'entireEmployeeData']);
 
-Route::get('/employees',[EmployeeController::class,'index']);
-Route::post('/employees/create',[EmployeeDataController::class,'create']); //todo: move this into the correct controller
-Route::delete('/employees/{employee}',[EmployeeController::class,'destroy']);
+
+// Route::get('/employees',[EmployeeController::class,'index']);
+// Route::post('/employees',[EmployeeController::class,'store']);
+// Route::delete('/employees/{employee}',[EmployeeController::class,'destroy']);
+
+//TODO: create api resource
+
+Route::apiResource('/employees',EmployeeController::class);
+
+

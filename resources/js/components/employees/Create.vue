@@ -43,7 +43,7 @@
                                     <label for="address" class="col-md-4 col-form-label text-md-end">Address</label>
                                     <div class="col-md-6">
                                         <input type="text" id="address" class="form-control"  value=""
-                                        v-model="form.address"/>
+                                        v-model="form.address" autocomplete="address-line1"/>
                                     </div>
                                 </div>
 
@@ -235,7 +235,7 @@ export default {
             )
         },
         submitForm(){
-            axios.post('/api/employees/create',
+            axios.post('/api/employees',
             {
                 first_name: this.form.first_name,
                 last_name: this.form.last_name,
@@ -250,7 +250,7 @@ export default {
                 date_hired: this.format_date(this.form.date_hired),
             }
             ).then(res => {
-                console.log(res);
+                this.$router.push({name:'EmployeesIndex'});
             });
 
         },

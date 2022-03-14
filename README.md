@@ -122,4 +122,9 @@
 - Implement delete employee
 - TODO : Confirmation for delete and delete confirmation
 
+- Creating Edit employee component
+- * Moving create employee from EmployeeDataController to EmployeeController
+- create apiResource to consolidate Employee actions
+- * transfer all employee data at once for better performance
+- * show spinner while loading in edit employee
 
