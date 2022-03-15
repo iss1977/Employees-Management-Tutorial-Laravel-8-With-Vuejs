@@ -128,3 +128,4 @@
 - * transfer all employee data at once for better performance
 - * show spinner while loading in edit employee
 
+- update employee from Vue component via api.

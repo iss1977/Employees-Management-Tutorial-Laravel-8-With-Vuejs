@@ -2545,9 +2545,6 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    // this.getCountries();
-    // this.getDepartments();
-    // this.getEmployeeData();
     this.getEmployeeDataAll();
   },
   methods: {
@@ -2567,28 +2564,19 @@ __webpack_require__.r(__webpack_exports__);
         _this.isLoading = false;
       });
     },
-    getEmployeeData: function getEmployeeData() {
-      var _this2 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/employees/' + this.$route.params.id).then(function (res) {
-        _this2.form = res.data.data.employee;
-      })["catch"](function (error) {
-        console.error('Error reading countries');
-      });
-    },
     getCountries: function getCountries() {
-      var _this3 = this;
+      var _this2 = this;
 
       console.log('Start get countries');
       this.states = [];
       axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/employees/countries').then(function (res) {
-        _this3.countries = res.data;
+        _this2.countries = res.data;
       })["catch"](function (error) {
         console.error('Error reading countries');
       });
     },
     getStatesOfCountry: function getStatesOfCountry() {
-      var _this4 = this;
+      var _this3 = this;
 
       this.cities = [];
       this.form.state_id = 0;
@@ -2598,41 +2586,41 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default().get(getRoute, [{
         responseType: 'json'
       }]).then(function (res) {
-        _this4.states = res.data;
+        _this3.states = res.data;
       })["catch"](function (error) {
         console.error('Error reading states');
       });
     },
     getCitiesOfState: function getCitiesOfState() {
-      var _this5 = this;
+      var _this4 = this;
 
       this.form.city_id = 0;
       var getRoute = "/api/employees/".concat(this.form.state_id, "/cities");
       axios__WEBPACK_IMPORTED_MODULE_0___default().get(getRoute, [{
         responseType: 'json'
       }]).then(function (res) {
-        _this5.cities = res.data;
+        _this4.cities = res.data;
       })["catch"](function (error) {
         console.error('Error reading cities');
       });
     },
     getDepartments: function getDepartments() {
-      var _this6 = this;
+      var _this5 = this;
 
       this.form.city_id = 0;
       var getRoute = "/api/employees/departments";
       axios__WEBPACK_IMPORTED_MODULE_0___default().get(getRoute, [{
         responseType: 'json'
       }]).then(function (res) {
-        _this6.departments = res.data;
+        _this5.departments = res.data;
       })["catch"](function (error) {
         console.error('Error reading departments');
       });
     },
     submitForm: function submitForm() {
-      var _this7 = this;
+      var _this6 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/employees/create', {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().put("/api/employees/+".concat(this.$route.params.id), {
         first_name: this.form.first_name,
         last_name: this.form.last_name,
         middle_name: this.form.middle_name,
@@ -2645,7 +2633,7 @@ __webpack_require__.r(__webpack_exports__);
         birthdate: this.format_date(this.form.birthdate),
         date_hired: this.format_date(this.form.date_hired)
       }).then(function (res) {
-        _this7.$router.push({
+        _this6.$router.push({
           name: 'EmployeesIndex'
         });
       });
@@ -60487,7 +60475,7 @@ var render = function () {
                       on: {
                         submit: function ($event) {
                           $event.preventDefault()
-                          return _vm.updateForm.apply(null, arguments)
+                          return _vm.submitForm.apply(null, arguments)
                         },
                       },
                     },

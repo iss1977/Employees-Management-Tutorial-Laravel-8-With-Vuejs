@@ -20,7 +20,7 @@
                         </div>
 
                         <div class="card-body">
-                            <form @submit.prevent="updateForm">
+                            <form @submit.prevent="submitForm">
                                 <!-- First name -->
                                 <div class="row mb-3">
                                     <label for="first_name" class="col-md-4 col-form-label text-md-end">First name</label>
@@ -191,9 +191,6 @@ export default {
         }
     },
     created(){
-        // this.getCountries();
-        // this.getDepartments();
-        // this.getEmployeeData();
         this.getEmployeeDataAll();
     },
     methods:{
@@ -212,17 +209,6 @@ export default {
             .then(() => { // always executed
                 this.isLoading = false;
             });
-        },
-        getEmployeeData(){
-            axios.get('/api/employees/'+this.$route.params.id)
-                .then(res => {
-                    this.form = res.data.data.employee;
-
-                })
-                .catch(error => {
-                    console.error('Error reading countries')
-                })
-
         },
         getCountries(){
             console.log('Start get countries');
@@ -276,7 +262,7 @@ export default {
             )
         },
         submitForm(){
-            axios.post('/api/employees/create',
+            axios.put(`/api/employees/+${this.$route.params.id}`,
             {
                 first_name: this.form.first_name,
                 last_name: this.form.last_name,
