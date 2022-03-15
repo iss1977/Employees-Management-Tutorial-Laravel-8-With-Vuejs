@@ -129,3 +129,8 @@
 - * show spinner while loading in edit employee
 
 - update employee from Vue component via api.
+- setting up search and filter by departments in employee index view
+- TODO : improve search and filter in Controller.
+
+===== Tutorial video finished ====
+

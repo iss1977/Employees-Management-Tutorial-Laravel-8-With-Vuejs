@@ -111,7 +111,6 @@
                                 <div class="row mb-3">
                                     <label class="col-md-4 col-form-label text-md-end" for="select_department">Department</label>
                                     <div class="col-md-6">
-                                        <!-- Cities Dropdown -->
                                         <select id="select_department" class="custom-select" required v-model="form.department_id">
                                             <option :value="0" disabled selected >-- Select Department --</option>
                                             <option v-for="department in departments" :key="department.id" :value="department.id">{{ department.name }}</option>
